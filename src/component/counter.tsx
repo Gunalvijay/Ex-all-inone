@@ -1,12 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { increment, decrement, reset } from "../features/counterSlice";
+import type { RootState } from "../app/store";
+
 
 function Counter() {
 
     const dispatch = useDispatch();
 
-    const count = useSelector((state: any) => state.counter.count);
+    const count = useSelector((state: RootState) => state.counter.count);
 
     return (
 
