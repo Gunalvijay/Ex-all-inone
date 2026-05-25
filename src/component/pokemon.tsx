@@ -3,8 +3,13 @@ import type { RootState, AppDispatch } from "../app/store";
 import { useEffect } from "react";
 import { fetchPokemon } from "../features/pokeSlice";
 
-const Pokemon = () => {
+interface Ability {
+    ability: {
+        name: string;
+    };
+}
 
+const Pokemon = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const { data, loading, error } = useSelector(
@@ -12,10 +17,8 @@ const Pokemon = () => {
     );
 
     useEffect(() => {
-
         dispatch(fetchPokemon());
-
-    }, []);
+    }, [dispatch]);
 
     if (loading) return <h1>Loading...</h1>;
 
@@ -23,17 +26,13 @@ const Pokemon = () => {
 
     return (
         <div>
+            <h1>{data?.name}</h1>
 
-            <h1>{data.name}</h1>
-
-            {data?.abilities?.map((item: any) => (
-
+            {data?.abilities?.map((item: Ability) => (
                 <p key={item.ability.name}>
                     {item.ability.name}
                 </p>
-
             ))}
-
         </div>
     );
 };
