@@ -9,6 +9,9 @@ interface Ability {
 interface PokemonData {
     name: string;
     abilities: Ability[];
+    sprites: {
+        front_default: string;
+    };
 }
 
 interface PokeState {

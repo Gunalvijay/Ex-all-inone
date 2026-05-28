@@ -3,11 +3,11 @@ import type { RootState, AppDispatch } from "../app/store";
 import { useEffect } from "react";
 import { fetchPokemon } from "../features/pokeSlice";
 
-interface Ability {
-    ability: {
-        name: string;
-    };
-}
+// interface Ability {
+//     ability: {
+//         name: string;
+//     };
+// }
 
 const Pokemon = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -28,11 +28,18 @@ const Pokemon = () => {
         <div>
             <h1>{data?.name}</h1>
 
-            {data?.abilities?.map((item: Ability) => (
+            {/* {data?.abilities?.map((item: Ability) => (
                 <p key={item.ability.name}>
                     {item.ability.name}
                 </p>
-            ))}
+            ))} */}
+
+            {data?.sprites?.front_default && (
+                <img
+                    src={data.sprites.front_default}
+                    alt={data.name}
+                />
+            )}
         </div>
     );
 };
